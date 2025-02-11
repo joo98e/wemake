@@ -1,5 +1,12 @@
 import type { RouteConfig } from "@react-router/dev/routes";
 import type { Route } from "../+types/root";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@radix-ui/react-accordion";
+import { Button } from "~/components/ui/button";
 
 export default function AboutUs() {
   return (
@@ -21,6 +28,8 @@ export default function AboutUs() {
           </a>
         </div>
       </div>
+
+      <Button>안녕하세요</Button>
     </main>
   );
 }
@@ -29,6 +38,6 @@ export const meta: Route.MetaFunction = () => {
   return [
     {
       title: "소개",
-    }
+    },
   ];
 };
