@@ -1,3 +1,6 @@
+import type { RouteConfig } from "@react-router/dev/routes";
+import type { Route } from "../+types/root";
+
 export default function AboutUs() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4">
@@ -21,3 +24,11 @@ export default function AboutUs() {
     </main>
   );
 }
+
+export const meta: Route.MetaFunction = () => {
+  return [
+    {
+      title: "소개",
+    }
+  ];
+};
