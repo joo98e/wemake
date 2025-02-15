@@ -131,7 +131,7 @@ export default function Navigation() {
     >
       <div className={"flex items-center"}>
         <Link to={"/"} className={"font-bold tracking-tighter text-lg"}>
-          Joo98e
+          Joo98e's wemake
         </Link>
         <Separator orientation={"vertical"} className={"h-6"} />
         <NavigationMenu>
