@@ -128,6 +128,23 @@ interface Props {
 }
 
 export default function Navigation({ isLoggedIn }: Props) {
+  function renderButtons() {
+    if (isLoggedIn) {
+      return null;
+    }
+
+    return (
+      <div className={"flex gap-4 items-center"}>
+        <Button asChild variant={"secondary"}>
+          <Link to={"/auth/login"}>Login</Link>
+        </Button>
+        <Button asChild>
+          <Link to={"/auth/signup"}>Sign Up</Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <nav
       className={
@@ -201,16 +218,7 @@ export default function Navigation({ isLoggedIn }: Props) {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      {isLoggedIn ? null : (
-        <div className={"flex gap-4 items-center"}>
-          <Button asChild variant={"secondary"}>
-            <Link to={"/auth/login"}>Login</Link>
-          </Button>
-          <Button asChild>
-            <Link to={"/auth/signup"}>Sign Up</Link>
-          </Button>
-        </div>
-      )}
+      {renderButtons()}
     </nav>
   );
 }
