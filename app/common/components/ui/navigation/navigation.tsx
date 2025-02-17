@@ -1,12 +1,13 @@
 import { Link } from "react-router";
+import { Button, buttonVariants } from "~/common/components/ui/button";
 import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "~/common/components/ui/navigation-menu";
 import { Separator } from "~/common/components/ui/separator";
 import { cn } from "~/lib/utils";
@@ -122,16 +123,20 @@ const menus = [
   },
 ];
 
-export default function Navigation() {
+interface Props {
+  isLoggedIn: boolean;
+}
+
+export default function Navigation({ isLoggedIn }: Props) {
   return (
     <nav
       className={
         "flex px-20 h-16 items-center justify-between backdrop-blur fixed top-0 left-0 right-0 z-50 bg-background/50"
       }
     >
-      <div className={"flex items-center"}>
+      <div className={"flex items-center gap-4"}>
         <Link to={"/"} className={"font-bold tracking-tighter text-lg"}>
-          Joo98e's wemake!
+          Joo98e's wemake
         </Link>
         <Separator orientation={"vertical"} className={"h-6"} />
         <NavigationMenu>
@@ -196,6 +201,14 @@ export default function Navigation() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+      {isLoggedIn ? null : (
+        <div className={"flex gap-4 items-center"}>
+          <Button variant={"outline"} asChild>
+            <Link to={"/login"}>Login</Link>
+          </Button>
+          <Button>Sign Up</Button>
+        </div>
+      )}
     </nav>
   );
 }
