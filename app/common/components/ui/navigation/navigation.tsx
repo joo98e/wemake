@@ -1,14 +1,39 @@
+import {
+  BarChart3Icon,
+  BellIcon,
+  LogOutIcon,
+  MessageCircleIcon,
+  SettingsIcon,
+  UserIcon
+} from "lucide-react";
 import { Link } from "react-router";
 import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "~/common/components/ui/avatar";
+import { Button } from "~/common/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/common/components/ui/dropdown-menu";
+import NavigationLink from "~/common/components/ui/link/NavigationLink";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "~/common/components/ui/navigation-menu";
 import { Separator } from "~/common/components/ui/separator";
+import InternalPaths from "~/common/constants/InternalPaths";
 import { cn } from "~/lib/utils";
 
 const menus = [
@@ -122,16 +147,133 @@ const menus = [
   },
 ];
 
-export default function Navigation() {
+interface Props {
+  isLoggedIn: boolean;
+  hasNotifications: boolean;
+  hasMessages: boolean;
+}
+
+export default function Navigation({
+  isLoggedIn,
+  hasNotifications,
+  hasMessages,
+}: Props) {
+  function renderButtons() {
+    if (isLoggedIn) {
+      return (
+        <div className={"flex items-center gap-2"}>
+          <div className={"relative"}>
+            <Button size={"icon"} variant={"ghost"} asChild>
+              <NavigationLink
+                onlyIcon
+                path={InternalPaths.NOTIFICATIONS}
+                icon={BellIcon}
+              />
+            </Button>
+            {hasNotifications && (
+              <div
+                className={
+                  "absolute -top-6 size-2 bg-red-500 rounded-full"
+                }
+              />
+            )}
+          </div>
+
+          <div className={"realative"}>
+            <Button size={"icon"} variant={"ghost"} asChild>
+              <NavigationLink
+                onlyIcon
+                path={InternalPaths.MESSAGES}
+                icon={MessageCircleIcon}
+              />
+            </Button>
+            {hasMessages && (
+              <div
+                className={
+                  "absolute -top-6 size-2 bg-red-500 rounded-full"
+                }
+              />
+            )}
+          </div>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar>
+                <AvatarImage src={"https://github.com/shadcn.png"} />
+                <AvatarFallback>J</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent className={"w-56"}>
+              <DropdownMenuLabel className={"flex flex-col gap-2"}>
+                <span className={"font-medium"}>Joo98e</span>
+                <span className={"text-xs text-muted-foreground"}>
+                  jtbeok@gmail.com
+                </span>
+              </DropdownMenuLabel>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={BarChart3Icon}
+                    iconSize={8}
+                    path={InternalPaths.DASHBOARD}
+                  />
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={UserIcon}
+                    iconSize={8}
+                    path={InternalPaths.PROFILE}
+                  />
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={SettingsIcon}
+                    iconSize={8}
+                    path={InternalPaths.SETTINGS}
+                  />
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem asChild className={"cursor-pointer"}>
+                <NavigationLink
+                  icon={LogOutIcon}
+                  iconSize={8}
+                  path={InternalPaths.LOGOUT}
+                />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      );
+    }
+
+    return (
+      <div className={"flex gap-4 items-center"}>
+        <Button asChild variant={"secondary"}>
+          <Link to={"/auth/login"}>Login</Link>
+        </Button>
+        <Button asChild>
+          <Link to={"/auth/signup"}>Sign Up</Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <nav
       className={
         "flex px-20 h-16 items-center justify-between backdrop-blur fixed top-0 left-0 right-0 z-50 bg-background/50"
       }
     >
-      <div className={"flex items-center"}>
+      <div className={"flex items-center gap-4"}>
         <Link to={"/"} className={"font-bold tracking-tighter text-lg"}>
-          Joo98e's wemake!
+          Joo98e's wemake
         </Link>
         <Separator orientation={"vertical"} className={"h-6"} />
         <NavigationMenu>
@@ -196,6 +338,7 @@ export default function Navigation() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+      {renderButtons()}
     </nav>
   );
 }

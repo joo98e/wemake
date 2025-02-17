@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <React.Fragment>
-      <Navigation />
+      <Navigation isLoggedIn hasMessages hasNotifications />
       <Outlet />
     </React.Fragment>
   );
