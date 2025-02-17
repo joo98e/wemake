@@ -5,12 +5,14 @@ import type InternalPaths from "~/common/constants/InternalPaths";
 import { cn } from "~/lib/utils";
 
 interface Props extends Omit<LinkProps, "to"> {
+  onlyIcon?: boolean;
   icon?: LucideIcon;
   iconSize?: number;
   path: InternalPaths;
 }
 
 export default function NavigationLink({
+  onlyIcon = false,
   path,
   icon: LucideIconComponent,
   iconSize,
@@ -23,7 +25,7 @@ export default function NavigationLink({
           className={cn([iconSize && `size-${iconSize} mr-2`])}
         />
       )}
-      {path.as}
+      {!onlyIcon && path.as}
     </Link>
   );
 }

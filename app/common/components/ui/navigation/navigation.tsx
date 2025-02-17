@@ -1,4 +1,11 @@
-import { BarChart3Icon } from "lucide-react";
+import {
+  BarChart3Icon,
+  BellIcon,
+  LogOutIcon,
+  MessageCircleIcon,
+  SettingsIcon,
+  UserIcon
+} from "lucide-react";
 import { Link } from "react-router";
 import {
   Avatar,
@@ -142,45 +149,107 @@ const menus = [
 
 interface Props {
   isLoggedIn: boolean;
+  hasNotifications: boolean;
+  hasMessages: boolean;
 }
 
-export default function Navigation({ isLoggedIn }: Props) {
-  function test() {
-    return <div></div>;
-  }
-
+export default function Navigation({
+  isLoggedIn,
+  hasNotifications,
+  hasMessages,
+}: Props) {
   function renderButtons() {
     if (isLoggedIn) {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Avatar>
-              <AvatarImage src={"https://github.com/shadcn.png"} />
-              <AvatarFallback>J</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
+        <div className={"flex items-center gap-2"}>
+          <div className={"relative"}>
+            <Button size={"icon"} variant={"ghost"} asChild>
+              <NavigationLink
+                onlyIcon
+                path={InternalPaths.NOTIFICATIONS}
+                icon={BellIcon}
+              />
+            </Button>
+            {!hasNotifications && (
+              <div
+                className={
+                  "absolute -top-0 -right-0 size-2 bg-red-500 rounded-full"
+                }
+              />
+            )}
+          </div>
 
-          <DropdownMenuContent className={"w-56"}>
-            <DropdownMenuLabel className={"flex flex-col gap-2"}>
-              <span className={"font-medium"}>Joo98e</span>
-              <span className={"text-xs text-muted-foreground"}>
-                jtbeok@gmail.com
-              </span>
-            </DropdownMenuLabel>
+          <div className={"realative"}>
+            <Button size={"icon"} variant={"ghost"} asChild>
+              <NavigationLink
+                onlyIcon
+                path={InternalPaths.MESSAGES}
+                icon={MessageCircleIcon}
+              />
+            </Button>
+            {hasMessages && (
+              <div
+                className={
+                  "absolute -top-0 -right-0 size-2 bg-red-500 rounded-full"
+                }
+              />
+            )}
+          </div>
 
-            <DropdownMenuSeparator />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar>
+                <AvatarImage src={"https://github.com/shadcn.png"} />
+                <AvatarFallback>J</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
 
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
+            <DropdownMenuContent className={"w-56"}>
+              <DropdownMenuLabel className={"flex flex-col gap-2"}>
+                <span className={"font-medium"}>Joo98e</span>
+                <span className={"text-xs text-muted-foreground"}>
+                  jtbeok@gmail.com
+                </span>
+              </DropdownMenuLabel>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={BarChart3Icon}
+                    iconSize={8}
+                    path={InternalPaths.DASHBOARD}
+                  />
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={UserIcon}
+                    iconSize={8}
+                    path={InternalPaths.PROFILE}
+                  />
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className={"cursor-pointer"}>
+                  <NavigationLink
+                    icon={SettingsIcon}
+                    iconSize={8}
+                    path={InternalPaths.SETTINGS}
+                  />
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem asChild className={"cursor-pointer"}>
                 <NavigationLink
-                  icon={BarChart3Icon}
+                  icon={LogOutIcon}
                   iconSize={8}
-                  path={InternalPaths.PROFILE}
+                  path={InternalPaths.LOGOUT}
                 />
               </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       );
     }
 
