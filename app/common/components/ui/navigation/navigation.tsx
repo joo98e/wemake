@@ -170,10 +170,10 @@ export default function Navigation({
                 icon={BellIcon}
               />
             </Button>
-            {!hasNotifications && (
+            {hasNotifications && (
               <div
                 className={
-                  "absolute -top-0 -right-0 size-2 bg-red-500 rounded-full"
+                  "absolute -top-6 size-2 bg-red-500 rounded-full"
                 }
               />
             )}
@@ -190,7 +190,7 @@ export default function Navigation({
             {hasMessages && (
               <div
                 className={
-                  "absolute -top-0 -right-0 size-2 bg-red-500 rounded-full"
+                  "absolute -top-6 size-2 bg-red-500 rounded-full"
                 }
               />
             )}
