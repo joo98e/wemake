@@ -203,10 +203,12 @@ export default function Navigation({ isLoggedIn }: Props) {
       </div>
       {isLoggedIn ? null : (
         <div className={"flex gap-4 items-center"}>
-          <Button variant={"outline"} asChild>
-            <Link to={"/login"}>Login</Link>
+          <Button asChild variant={"secondary"}>
+            <Link to={"/auth/login"}>Login</Link>
           </Button>
-          <Button>Sign Up</Button>
+          <Button asChild>
+            <Link to={"/auth/signup"}>Sign Up</Link>
+          </Button>
         </div>
       )}
     </nav>
