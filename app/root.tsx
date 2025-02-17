@@ -45,10 +45,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <React.Fragment>
+    <div className={'p-20'}>
       <Navigation isLoggedIn hasMessages hasNotifications />
       <Outlet />
-    </React.Fragment>
+    </div>
   );
 }
 
