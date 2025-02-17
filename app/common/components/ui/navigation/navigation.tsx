@@ -1,5 +1,21 @@
+import { BarChart3Icon } from "lucide-react";
 import { Link } from "react-router";
-import { Button, buttonVariants } from "~/common/components/ui/button";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "~/common/components/ui/avatar";
+import { Button } from "~/common/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/common/components/ui/dropdown-menu";
+import NavigationLink from "~/common/components/ui/link/NavigationLink";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,6 +26,7 @@ import {
   navigationMenuTriggerStyle,
 } from "~/common/components/ui/navigation-menu";
 import { Separator } from "~/common/components/ui/separator";
+import InternalPaths from "~/common/constants/InternalPaths";
 import { cn } from "~/lib/utils";
 
 const menus = [
@@ -128,9 +145,43 @@ interface Props {
 }
 
 export default function Navigation({ isLoggedIn }: Props) {
+  function test() {
+    return <div></div>;
+  }
+
   function renderButtons() {
     if (isLoggedIn) {
-      return null;
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Avatar>
+              <AvatarImage src={"https://github.com/shadcn.png"} />
+              <AvatarFallback>J</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent className={"w-56"}>
+            <DropdownMenuLabel className={"flex flex-col gap-2"}>
+              <span className={"font-medium"}>Joo98e</span>
+              <span className={"text-xs text-muted-foreground"}>
+                jtbeok@gmail.com
+              </span>
+            </DropdownMenuLabel>
+
+            <DropdownMenuSeparator />
+
+            <DropdownMenuGroup>
+              <DropdownMenuItem asChild>
+                <NavigationLink
+                  icon={BarChart3Icon}
+                  iconSize={8}
+                  path={InternalPaths.PROFILE}
+                />
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
     }
 
     return (
