@@ -173,13 +173,13 @@ export default function Navigation({
             {hasNotifications && (
               <div
                 className={
-                  "absolute -top-6 size-2 bg-red-500 rounded-full"
+                  "absolute top-1 right-1 size-2 bg-red-500 rounded-full"
                 }
               />
             )}
           </div>
 
-          <div className={"realative"}>
+          <div className={"relative"}>
             <Button size={"icon"} variant={"ghost"} asChild>
               <NavigationLink
                 onlyIcon
@@ -190,7 +190,7 @@ export default function Navigation({
             {hasMessages && (
               <div
                 className={
-                  "absolute -top-6 size-2 bg-red-500 rounded-full"
+                  "absolute top-1 right-1 size-2 bg-red-500 rounded-full"
                 }
               />
             )}
