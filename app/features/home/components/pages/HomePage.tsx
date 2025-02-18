@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => [
 
 export default function HomePage() {
   return (
-    <div className="h-[100vh] grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-4 mt-12">
       <div>
         <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
           Today's Products
@@ -23,16 +23,17 @@ export default function HomePage() {
         </p>
       </div>
 
-      <div>
-      <ProductCard
-          id="productId"
-          title="Product Title"
-          description="Product Description"
-          commentsCount={12}
-          viewsCount={12}
-          votesCount={120}
-        />
-      </div>
+      {Array.from({ length: 10 }).map((_, i) => (
+          <ProductCard
+            key={i}
+            id="productId"
+            title="Product Title"
+            description="Product Description"
+            commentsCount={12}
+            viewsCount={12}
+            votesCount={120}
+          />
+        ))}
     </div>
   );
 }
