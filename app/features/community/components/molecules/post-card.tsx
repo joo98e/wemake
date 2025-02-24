@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "~/common/components/ui/card";
 import { Button } from "~/common/components/ui/button";
+import { DotIcon } from "lucide-react";
 
 interface PostCardProps {
   id: string;
@@ -46,7 +47,7 @@ const PostCard = ({
             <div className="flex gap-2 text-xs leading-tight text-muted-foreground">
               <span>{authorName}</span>
               <span>{category}</span>
-              <span>·</span>
+              <DotIcon className={"w-4 h-4"} />
               <span>{postedAt}</span>
             </div>
           </div>
