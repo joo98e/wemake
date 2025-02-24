@@ -2,13 +2,13 @@ export default class InternalPaths {
   static readonly NOTIFICATIONS = new InternalPaths(
     "/notifications",
     "Notifications",
-    "공지사항",
+    "공지사항"
   );
 
   static readonly MESSAGES = new InternalPaths(
     "/messages",
     "Messages",
-    "메시지",
+    "메시지"
   );
 
   static readonly PROFILE = new InternalPaths(
@@ -27,6 +27,12 @@ export default class InternalPaths {
     "/my/settings",
     "Settings",
     "설정"
+  );
+
+  static readonly DISCUSSIONS = new InternalPaths(
+    "/discussions/postId",
+    "Discussions",
+    "토론"
   );
 
   static readonly LOGOUT = new InternalPaths("/logout", "Logout", "로그아웃");

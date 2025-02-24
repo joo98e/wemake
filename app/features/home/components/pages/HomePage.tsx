@@ -8,9 +8,12 @@ import { Button } from "~/common/components/ui/button";
 import {
   Card,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "~/common/components/ui/card";
+import InternalPaths from "~/common/constants/InternalPaths";
+import PostCard from "~/features/community/components/molecules/post-card";
 import { ProductCard } from "~/features/home/components/molecules/ProductCard";
 
 export const meta: MetaFunction = () => [
@@ -25,7 +28,7 @@ export const meta: MetaFunction = () => [
 
 export default function HomePage() {
   return (
-    <div className={'space-y-40'}>
+    <div className={"space-y-40"}>
       <div className="grid grid-cols-3 gap-4 mt-12">
         <div>
           <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
@@ -67,20 +70,17 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Card className={"bg-transparent hover:bg-card/50 transition-colors"}>
-          <CardHeader className={"flex flex-row items-center gap-2 space-y-0"}>
-            <Avatar className={'size-14'}>
-              <AvatarFallback>N</AvatarFallback>
-              <AvatarImage src={"https://github.com/apple.png"} />
-            </Avatar>
-            <CardTitle>Discussion Title</CardTitle>
-            <div>
-              <span>Joo98e</span>
-              <span>Productivity</span>
-              <span>12 hours ago</span>
-            </div>
-          </CardHeader>
-        </Card>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <PostCard
+            key={i}
+            id={i}
+            title={"What is the best productivity tool?"}
+            authorName={"Joo98e"}
+            authorAvatarUrl={"https://github.com/joo98e.png"}
+            category={"Productivity"}
+            postedAt={"12 hours ago"}
+          />
+        ))}
       </div>
 
       {/* 5 min 40 sec */}
