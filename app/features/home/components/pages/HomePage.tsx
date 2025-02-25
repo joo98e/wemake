@@ -29,6 +29,8 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function HomePage() {
+  const avtarUrl = "https://github.com/joo98e.png";
+
   return (
     <div className={"space-y-40"}>
       <div className="grid grid-cols-3 gap-4 mt-12">
@@ -78,7 +80,7 @@ export default function HomePage() {
             id={i}
             title={"What is the best productivity tool?"}
             authorName={"Joo98e"}
-            authorAvatarUrl={"https://github.com/joo98e.png"}
+            authorAvatarUrl={avtarUrl}
             category={"Productivity"}
             postedAt={"12 hours ago"}
           />
