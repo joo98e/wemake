@@ -1,3 +1,4 @@
+import { DotIcon, EyeIcon } from "lucide-react";
 import { Link, type MetaFunction } from "react-router";
 import {
   Avatar,
@@ -7,10 +8,14 @@ import {
 import { Button } from "~/common/components/ui/button";
 import {
   Card,
+  CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "~/common/components/ui/card";
+import InternalPaths from "~/common/constants/InternalPaths";
+import PostCard from "~/features/community/components/molecules/post-card";
 import { ProductCard } from "~/features/home/components/molecules/ProductCard";
 
 export const meta: MetaFunction = () => [
@@ -24,8 +29,10 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function HomePage() {
+  const avtarUrl = "https://github.com/joo98e.png";
+
   return (
-    <div className={'space-y-40'}>
+    <div className={"space-y-40"}>
       <div className="grid grid-cols-3 gap-4 mt-12">
         <div>
           <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
@@ -67,23 +74,51 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Card className={"bg-transparent hover:bg-card/50 transition-colors"}>
-          <CardHeader className={"flex flex-row items-center gap-2 space-y-0"}>
-            <Avatar className={'size-14'}>
-              <AvatarFallback>N</AvatarFallback>
-              <AvatarImage src={"https://github.com/apple.png"} />
-            </Avatar>
-            <CardTitle>Discussion Title</CardTitle>
-            <div>
-              <span>Joo98e</span>
-              <span>Productivity</span>
-              <span>12 hours ago</span>
-            </div>
-          </CardHeader>
-        </Card>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <PostCard
+            key={i}
+            id={i}
+            title={"What is the best productivity tool?"}
+            authorName={"Joo98e"}
+            authorAvatarUrl={avtarUrl}
+            category={"Productivity"}
+            postedAt={"12 hours ago"}
+          />
+        ))}
       </div>
 
-      {/* 5 min 40 sec */}
+      <div className="grid grid-cols-3 gap-4 mt-12">
+        <div>
+          <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
+            Ideas GPT
+          </h2>
+          <p className={"text-xl font-light text-foreground"}>
+            Find ideas for your next project.
+          </p>
+          <Button variant={"link"} asChild className={"textlg p-0"}>
+            <Link to={"/community"}>Explore all Ideas &rarr;</Link>
+          </Button>
+        </div>
+
+        <Card className={"bg-transparent hover:bg-card/50 transition-colors"}>
+          <CardHeader>
+            <CardTitle className={"text-xl"}>
+              A startup that creates an AI-powered generated personal trainer,
+              delivering customized fitness recommendations and tracking of
+              progress using a mobile app to track workouts and progress as well
+              as a wbsite to manage the business.
+            </CardTitle>
+          </CardHeader>
+          <CardContent className={"flex items-center text-sm"}>
+            <div className={"flex items-center gap-2"}>
+              <EyeIcon className={"w-4 h-4"} />
+              <span>123</span>
+            </div>
+            <DotIcon className={"w-4 h-4"} />
+            <span>12 horus ago</span>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
