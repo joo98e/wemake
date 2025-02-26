@@ -1,4 +1,4 @@
-import { DotIcon, EyeIcon } from "lucide-react";
+import { DotIcon, EyeIcon, HeartIcon } from "lucide-react";
 import { Link, type MetaFunction } from "react-router";
 import {
   Avatar,
@@ -17,6 +17,7 @@ import {
 import InternalPaths from "~/common/constants/InternalPaths";
 import PostCard from "~/features/community/components/molecules/post-card";
 import { ProductCard } from "~/features/home/components/molecules/ProductCard";
+import IdeasCard from "~/features/ideas/components/molecules/IdeasCard";
 
 export const meta: MetaFunction = () => [
   {
@@ -77,7 +78,7 @@ export default function HomePage() {
         {Array.from({ length: 10 }).map((_, i) => (
           <PostCard
             key={i}
-            id={i}
+            id={i + ""}
             title={"What is the best productivity tool?"}
             authorName={"Joo98e"}
             authorAvatarUrl={avtarUrl}
@@ -100,24 +101,22 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Card className={"bg-transparent hover:bg-card/50 transition-colors"}>
-          <CardHeader>
-            <CardTitle className={"text-xl"}>
-              A startup that creates an AI-powered generated personal trainer,
-              delivering customized fitness recommendations and tracking of
-              progress using a mobile app to track workouts and progress as well
-              as a wbsite to manage the business.
-            </CardTitle>
-          </CardHeader>
-          <CardContent className={"flex items-center text-sm"}>
-            <div className={"flex items-center gap-2"}>
-              <EyeIcon className={"w-4 h-4"} />
-              <span>123</span>
-            </div>
-            <DotIcon className={"w-4 h-4"} />
-            <span>12 horus ago</span>
-          </CardContent>
-        </Card>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <IdeasCard
+            key={i}
+            id={i + ""}
+            title={`
+            A startup that creates an AI-powered generated personal trainer,
+            delivering customized fitness recommendations and tracking of
+            progress using a mobile app to track workouts and progress as well
+            as a wbsite to manage the business.
+            `}
+            viewsCount={123}
+            postedAt={"12 hours ago"}
+            likesCount={12}
+            claimed={i % 2 === 0}
+          />
+        ))}
       </div>
     </div>
   );
