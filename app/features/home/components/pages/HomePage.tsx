@@ -16,8 +16,8 @@ import {
 } from "~/common/components/ui/card";
 import InternalPaths from "~/common/constants/InternalPaths";
 import PostCard from "~/features/community/components/molecules/post-card";
-import { ProductCard } from "~/features/home/components/molecules/ProductCard";
-import IdeasCard from "~/features/ideas/components/molecules/IdeasCard";
+import { ProductCard } from "~/features/home/components/molecules/product-card";
+import IdeasCard from "~/features/ideas/components/molecules/ideas-card";
 
 export const meta: MetaFunction = () => [
   {
@@ -117,6 +117,22 @@ export default function HomePage() {
             claimed={i % 2 === 0}
           />
         ))}
+      </div>
+
+      <div className="grid grid-cols-3 gap-4 mt-12">
+        <div>
+          <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
+            Latest Jobs
+          </h2>
+          <p className={"text-xl font-light text-foreground"}>
+            Find your dream job.
+          </p>
+          <Button variant={"link"} asChild className={"textlg p-0"}>
+            <Link to={"/community"}>Explore all jobs &rarr;</Link>
+          </Button>
+        </div>
+
+        
       </div>
     </div>
   );
