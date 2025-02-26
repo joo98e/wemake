@@ -1,23 +1,9 @@
-import { DotIcon, EyeIcon, HeartIcon } from "lucide-react";
 import { Link, type MetaFunction } from "react-router";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "~/common/components/ui/avatar";
 import { Button } from "~/common/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/common/components/ui/card";
-import InternalPaths from "~/common/constants/InternalPaths";
 import PostCard from "~/features/community/components/molecules/post-card";
 import { ProductCard } from "~/features/home/components/molecules/product-card";
 import IdeasCard from "~/features/ideas/components/molecules/ideas-card";
+import JobCard from "~/features/job/components/molecules/job-card";
 
 export const meta: MetaFunction = () => [
   {
@@ -119,7 +105,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mt-12">
+      <div className="grid grid-cols-4 gap-4 mt-12">
         <div>
           <h2 className={"text-5xl font-bold leading-tight tracking-tight"}>
             Latest Jobs
@@ -132,7 +118,23 @@ export default function HomePage() {
           </Button>
         </div>
 
-        
+        {Array.from({ length: 10 }).map((_, i) => (
+          <JobCard
+            key={i + ""}
+            id={"1"}
+            postedAt={"12 hours ago"}
+            company={"Facebook"}
+            companyLogoUrl={"https://github.com/facebook.png"}
+            companyHq={"San Francisco, CA"}
+            title={"Software Engineer"}
+            type={"Full-time"}
+            positionLocation={"Remote"}
+            salary={{
+              min: 100_000,
+              max: 120_000,
+            }}
+          />
+        ))}
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/common/components/ui/card";
-import { cn } from "~/lib/utils";
+import { cn } from "~/lib/utils/utils";
 
 interface Props {
   id: string;
