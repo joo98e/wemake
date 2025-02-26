@@ -6,11 +6,17 @@ import {
 } from "~/common/components/ui/avatar";
 import { Badge } from "~/common/components/ui/badge";
 import { Button } from "~/common/components/ui/button";
-import { Card, CardHeader, CardTitle } from "~/common/components/ui/card";
+import {
+  Card,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/common/components/ui/card";
 import PostCard from "~/features/community/components/molecules/post-card";
 import ProductCard from "~/features/home/components/molecules/product-card";
 import IdeasCard from "~/features/ideas/components/molecules/ideas-card";
 import JobCard from "~/features/job/components/molecules/job-card";
+import TeamCard from "~/features/teams/components/molecules/team-card";
 
 export const meta: MetaFunction = () => [
   {
@@ -157,22 +163,20 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <Link to={"/teams/teamId"}>
-          <Card className={"bg-transparent hover:bg-card/50 transition-colors"}>
-            <CardHeader className={"flex flex-row items-center"}>
-              <CardTitle className={"text-base"}>
-                <Badge variant={"secondary"}>
-                  <span>@Joo98e</span>
-                  <Avatar>
-                    <AvatarFallback>J</AvatarFallback>
-                    <AvatarImage src={"https//github.com/inthetiger.png"} />
-                  </Avatar>
-                </Badge>
-                is looking for a new member
-              </CardTitle>
-            </CardHeader>
-          </Card>
-        </Link>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <TeamCard
+            key={i}
+            id={i + ""}
+            leaderUsername={"Joo98e"}
+            leaderAvatarUrl={"https://github.com/joo98e.png"}
+            positions={[
+              "Frontend Developer",
+              "Backend Developer",
+              "Product Owner",
+            ]}
+            projectDescription={"a new social media platform"}
+          />
+        ))}
       </div>
     </div>
   );
