@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/common/components/ui/card";
+import { GlobalConstants } from "~/common/constants/GlobalConstant";
 import PostCard from "~/features/community/components/molecules/post-card";
 import ProductCard from "~/features/home/components/molecules/product-card";
 import IdeasCard from "~/features/ideas/components/molecules/ideas-card";
@@ -29,8 +30,6 @@ export const meta: MetaFunction = () => [
 ];
 
 export default function HomePage() {
-  const avtarUrl = "https://github.com/joo98e.png";
-
   return (
     <div className={"space-y-40"}>
       <div className="grid grid-cols-3 gap-4 mt-12">
@@ -79,8 +78,8 @@ export default function HomePage() {
             key={i}
             id={i + ""}
             title={"What is the best productivity tool?"}
-            authorName={"Joo98e"}
-            authorAvatarUrl={avtarUrl}
+            authorName={GlobalConstants.githubNickname}
+            authorAvatarUrl={GlobalConstants.githubAvatarUrl}
             category={"Productivity"}
             postedAt={"12 hours ago"}
           />
@@ -167,8 +166,8 @@ export default function HomePage() {
           <TeamCard
             key={i}
             id={i + ""}
-            leaderUsername={"Joo98e"}
-            leaderAvatarUrl={"https://github.com/joo98e.png"}
+            leaderUsername={GlobalConstants.githubNickname}
+            leaderAvatarUrl={GlobalConstants.githubAvatarUrl}
             positions={[
               "Frontend Developer",
               "Backend Developer",
