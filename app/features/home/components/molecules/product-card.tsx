@@ -18,7 +18,7 @@ interface ProductCardProps {
   votesCount: number;
 }
 
-export function ProductCard({
+export default function ProductCard({
   id,
   title,
   description,

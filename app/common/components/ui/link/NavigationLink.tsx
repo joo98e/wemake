@@ -2,7 +2,7 @@ import type { LucideIcon, LucideProps } from "lucide-react";
 import { Link, type LinkProps } from "react-router";
 import { twMerge } from "tailwind-merge";
 import type InternalPaths from "~/common/constants/InternalPaths";
-import { cn } from "~/lib/utils";
+import { cn } from "~/lib/utils/utils";
 
 interface Props extends Omit<LinkProps, "to"> {
   onlyIcon?: boolean;
