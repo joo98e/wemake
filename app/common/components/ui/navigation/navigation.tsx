@@ -49,7 +49,7 @@ const menus = [
       {
         name: "Categories",
         description: "See the top performers in your community",
-        to: "/products/leaderboards",
+        to: "/products/categories",
       },
       {
         name: "Search",
