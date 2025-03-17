@@ -165,7 +165,7 @@ export default function Navigation({
           <div className={"relative"}>
             <Button size={"icon"} variant={"ghost"} asChild>
               <NavigationLink
-                href={InternalPaths.NOTIFICATIONS.path}
+                to={InternalPaths.NOTIFICATIONS.path}
                 onlyIcon
                 icon={BellIcon}
               >
@@ -184,7 +184,7 @@ export default function Navigation({
           <div className={"relative"}>
             <Button size={"icon"} variant={"ghost"} asChild>
               <NavigationLink
-                href={InternalPaths.MESSAGES.path}
+                to={InternalPaths.MESSAGES.path}
                 onlyIcon
                 icon={MessageCircleIcon}
               >
@@ -223,7 +223,7 @@ export default function Navigation({
                   <NavigationLink
                     icon={BarChart3Icon}
                     iconSize={8}
-                    href={InternalPaths.DASHBOARD.path}
+                    to={InternalPaths.DASHBOARD.path}
                   >
                     대시보드
                   </NavigationLink>
@@ -232,7 +232,7 @@ export default function Navigation({
                   <NavigationLink
                     icon={UserIcon}
                     iconSize={8}
-                    href={InternalPaths.PROFILE.path}
+                    to={InternalPaths.PROFILE.path}
                   >
                     프로필
                   </NavigationLink>
@@ -241,7 +241,7 @@ export default function Navigation({
                   <NavigationLink
                     icon={SettingsIcon}
                     iconSize={8}
-                    href={InternalPaths.SETTINGS.path}
+                    to={InternalPaths.SETTINGS.path}
                   >
                     설정
                   </NavigationLink>
@@ -254,7 +254,7 @@ export default function Navigation({
                 <NavigationLink
                   icon={LogOutIcon}
                   iconSize={8}
-                  href={InternalPaths.LOGOUT.path}
+                  to={InternalPaths.LOGOUT.path}
                 >
                   로그아웃
                 </NavigationLink>

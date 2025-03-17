@@ -1,6 +1,8 @@
 import { Link, type MetaFunction } from "react-router";
 import { Button } from "~/common/components/ui/button";
+import NavigationLink from "~/common/components/ui/link/NavigationLink";
 import { GlobalConstants } from "~/common/constants/GlobalConstant";
+import InternalPaths from "~/common/constants/InternalPaths";
 import PostCard from "~/features/community/components/molecules/post-card";
 import ProductCard from "~/features/home/components/molecules/product-card";
 import IdeasCard from "~/features/ideas/components/molecules/ideas-card";
@@ -83,7 +85,9 @@ export default function HomePage() {
             Find ideas for your next project.
           </p>
           <Button variant={"link"} asChild className={"textlg p-0"}>
-            <Link to={"/community"}>Explore all Ideas &rarr;</Link>
+            <NavigationLink to={InternalPaths.IDEAS_GPT.path}>
+              Explore all Ideas &rarr;
+            </NavigationLink>
           </Button>
         </div>
 
@@ -114,7 +118,9 @@ export default function HomePage() {
             Find your dream job.
           </p>
           <Button variant={"link"} asChild className={"textlg p-0"}>
-            <Link to={"/community"}>Explore all jobs &rarr;</Link>
+            <NavigationLink to={InternalPaths.JOB.path}>
+              Explore all jobs &rarr;
+            </NavigationLink>
           </Button>
         </div>
 

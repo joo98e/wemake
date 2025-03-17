@@ -6,20 +6,20 @@ interface Props extends Omit<LinkProps, "to"> {
   onlyIcon?: boolean;
   icon?: LucideIcon;
   iconSize?: number;
-  href: string;
+  to: string;
   children: React.ReactNode;
 }
 
 export default function NavigationLink({
   onlyIcon = false,
-  href,
+  to,
   icon: LucideIconComponent,
   iconSize,
   children,
   ...rest
 }: Props) {
   return (
-    <Link to={href} {...rest}>
+    <Link to={to} {...rest}>
       {LucideIconComponent && (
         <LucideIconComponent
           className={cn([iconSize && `size-${iconSize} mr-2`])}
