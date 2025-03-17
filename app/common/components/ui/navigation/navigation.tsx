@@ -34,7 +34,7 @@ import {
 } from "~/common/components/ui/navigation-menu";
 import { Separator } from "~/common/components/ui/separator";
 import InternalPaths from "~/common/constants/InternalPaths";
-import { cn } from "~/lib/utils/utils";
+import { cn } from "~/lib/utils";
 
 const menus = [
   {
