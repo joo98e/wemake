@@ -4,7 +4,7 @@ import {
   LogOutIcon,
   MessageCircleIcon,
   SettingsIcon,
-  UserIcon
+  UserIcon,
 } from "lucide-react";
 import { Link } from "react-router";
 import {
@@ -165,10 +165,12 @@ export default function Navigation({
           <div className={"relative"}>
             <Button size={"icon"} variant={"ghost"} asChild>
               <NavigationLink
+                href={InternalPaths.NOTIFICATIONS.path}
                 onlyIcon
-                path={InternalPaths.NOTIFICATIONS}
                 icon={BellIcon}
-              />
+              >
+                공지사항
+              </NavigationLink>
             </Button>
             {hasNotifications && (
               <div
@@ -182,10 +184,12 @@ export default function Navigation({
           <div className={"relative"}>
             <Button size={"icon"} variant={"ghost"} asChild>
               <NavigationLink
+                href={InternalPaths.MESSAGES.path}
                 onlyIcon
-                path={InternalPaths.MESSAGES}
                 icon={MessageCircleIcon}
-              />
+              >
+                메시지
+              </NavigationLink>
             </Button>
             {hasMessages && (
               <div
@@ -219,22 +223,28 @@ export default function Navigation({
                   <NavigationLink
                     icon={BarChart3Icon}
                     iconSize={8}
-                    path={InternalPaths.DASHBOARD}
-                  />
+                    href={InternalPaths.DASHBOARD.path}
+                  >
+                    대시보드
+                  </NavigationLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className={"cursor-pointer"}>
                   <NavigationLink
                     icon={UserIcon}
                     iconSize={8}
-                    path={InternalPaths.PROFILE}
-                  />
+                    href={InternalPaths.PROFILE.path}
+                  >
+                    프로필
+                  </NavigationLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className={"cursor-pointer"}>
                   <NavigationLink
                     icon={SettingsIcon}
                     iconSize={8}
-                    path={InternalPaths.SETTINGS}
-                  />
+                    href={InternalPaths.SETTINGS.path}
+                  >
+                    설정
+                  </NavigationLink>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
 
@@ -244,8 +254,10 @@ export default function Navigation({
                 <NavigationLink
                   icon={LogOutIcon}
                   iconSize={8}
-                  path={InternalPaths.LOGOUT}
-                />
+                  href={InternalPaths.LOGOUT.path}
+                >
+                  로그아웃
+                </NavigationLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

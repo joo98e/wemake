@@ -1,31 +1,31 @@
-import type { LucideIcon, LucideProps } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Link, type LinkProps } from "react-router";
-import { twMerge } from "tailwind-merge";
-import type InternalPaths from "~/common/constants/InternalPaths";
 import { cn } from "~/lib/utils";
 
 interface Props extends Omit<LinkProps, "to"> {
   onlyIcon?: boolean;
   icon?: LucideIcon;
   iconSize?: number;
-  path: InternalPaths;
+  href: string;
+  children: React.ReactNode;
 }
 
 export default function NavigationLink({
   onlyIcon = false,
-  path,
+  href,
   icon: LucideIconComponent,
   iconSize,
+  children,
   ...rest
 }: Props) {
   return (
-    <Link to={path.path} {...rest}>
+    <Link to={href} {...rest}>
       {LucideIconComponent && (
         <LucideIconComponent
           className={cn([iconSize && `size-${iconSize} mr-2`])}
         />
       )}
-      {!onlyIcon && path.as}
+      {!onlyIcon && children}
     </Link>
   );
 }
