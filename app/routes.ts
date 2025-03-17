@@ -13,19 +13,19 @@ export default [
       index("features/products/components/pages/ProductLeaderboardPage.tsx"),
       route(
         "/yearly/:year",
-        "features/products/components/pages/ProductYearlyLeaderboardPage.tsx"
+        "features/products/components/pages/ProductLeaderboardYearlyPage.tsx"
       ),
       route(
         "/monthly/:year/:month",
-        "features/products/components/pages/ProductMonthlyLeaderboardPage.tsx"
+        "features/products/components/pages/ProductLeaderboardMonthlyPage.tsx"
       ),
       route(
         "/daily/:year/:month/:day",
-        "features/products/components/pages/ProductDailyLeaderboardPage.tsx"
+        "features/products/components/pages/ProductLeaderboardDailyPage.tsx"
       ),
       route(
         "/weekly/:year/:week",
-        "features/products/components/pages/ProductWeeklyLeaderboardPage.tsx"
+        "features/products/components/pages/ProductLeaderboardWeeklyPage.tsx"
       ),
     ]),
     ...prefix("categories", [
